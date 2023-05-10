@@ -19,7 +19,7 @@ function Book() {
   this.pages = form.pages.value;
   this.read = form.read.checked;
 }
-
+/*book  Object constructor*/
 function addBookToLibrary() {
   event.preventDefault();
   newBook = new Book();
@@ -31,6 +31,7 @@ function addBookToLibrary() {
   formDiv.style.display = "none";
   form.reset();
 }
+/*add book to array myLibrary*/
 
 function loopArray() {
   for (let i = 0; i < myLibrary.length; i++) {
@@ -39,6 +40,7 @@ function loopArray() {
     }
   }
 }
+/*loop the array myLibrary and call createBook function at each iteration*/
 
 function createBook(book) {
   let books = document.querySelector("#books");
@@ -103,9 +105,12 @@ function createBook(book) {
   divB.setAttribute("id", myLibrary.indexOf(book));
   books.appendChild(divB);
 }
+/*create all the components of the card that displays each books*/
+
 function saveData() {
   localStorage.setItem(`myLibrary`, JSON.stringify(myLibrary));
 }
+/*save myLibrary into the localStorage*/
 
 function restore() {
   if (!localStorage.myLibrary) {
@@ -117,5 +122,6 @@ function restore() {
     loopArray();
   }
 }
+/*get the saved array myLibrary,parse it and loop it so it displays all books*/
 
 restore();
